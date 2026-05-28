@@ -1,0 +1,19 @@
+identifier: nice_nano_v2
+name: Nice Nano v2
+type: mcu
+arch: arm
+toolchain:
+  - gnuarmemb
+  - xtools
+supported:
+  - adc
+  - ble
+  - gpio
+  - i2c
+  - pwm
+  - spi
+  - uart
+  - usb
+  - watchdog
+  - counter
+  - crypto

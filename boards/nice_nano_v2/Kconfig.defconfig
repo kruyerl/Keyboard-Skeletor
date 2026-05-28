@@ -1,0 +1,12 @@
+if BOARD_NICE_NANO_V2
+
+config BOARD
+	default "nice_nano_v2"
+
+config SOC
+	default "nrf52840_qiaa"
+
+config ZMK_USB
+	default y
+
+endif
