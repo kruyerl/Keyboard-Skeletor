@@ -1,5 +1,5 @@
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1650  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 86    // default: 10
 
 #include <behaviors.dtsi>
 #include <behaviors/mouse_keys.dtsi>
@@ -18,7 +18,7 @@ combo_##NAME { \
 };
 
 #define BASE 0
-#define NUMBERS 1
+#define ALT 1
 #define SYMBOLS 2
 #define SYSTEM 3
 #define GAMING 4
@@ -109,14 +109,27 @@ combo_##NAME { \
   };
 
   behaviors {
-    hm: homerow_mods {  
+    lhm: left_homerow_mods {  
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
-      tapping-term-ms = <400>;
-      require-prior-idle-ms = <125>;
-      quick-tap-ms = <300>;
       flavor = "hold-preferred";
+      require-prior-idle-ms = <100>;
+      tapping-term-ms = <180>;
+      quick-tap-ms = <120>;
       bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <16 17 18 19>;
+      hold-trigger-on-release;
+    };
+    rhm: right_homerow_mods {  
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "hold-preferred";
+      require-prior-idle-ms = <100>;
+      tapping-term-ms = <180>;
+      quick-tap-ms = <120>;
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <10 11 12 13>;
+      hold-trigger-on-release;
     };
     ent: enter_mods {  
       compatible = "zmk,behavior-hold-tap";
@@ -147,17 +160,17 @@ combo_##NAME { \
       display-name = "Base";
       bindings = <
         &kp Q         &kp W         &kp E       &kp R       &kp T     &kp Y     &kp U       &kp I       &kp O       &kp P
-        &hm LSHIFT A  &hm LCTRL S   &hm LALT D  &hm LGUI F  &kp G     &kp H     &hm RGUI J  &hm RALT K  &hm RCTRL L &hm RSHIFT BSPC
+        &lhm LSHIFT A  &lhm LCTRL S   &lhm LALT D  &lhm LGUI F  &kp G     &kp H     &rhm RGUI J  &rhm RALT K  &rhm RCTRL L &rhm RSHIFT BSPC
         &kp Z         &kp X         &kp C       &kp V       &kp B     &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
         &mo 1         &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &mo 1
       > ;
     };
-    number_layer {
-      display-name = "Numbers";
+    alt_layer {
+      display-name = "Alt";
       bindings = <
         &kp N1      &kp N2      &kp N3      &kp  N4       &kp N5        &kp N6          &kp N7          &kp N8            &kp N9          &kp N0
-        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI      &alt_ff       &kp LEFT        &kp DOWN        &kp UP            &kp RIGHT       &msc SCRL_UP
-        &kp ESC     &kp CAPS    &kp PSCRN   &kp DEL       &td_mouse0    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP      &mmv MOVE_RIGHT &msc SCRL_DOWN
+        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI      &td_mouse0    &kp LEFT        &kp DOWN        &kp UP            &kp RIGHT       &msc SCRL_UP
+        &alt_ff     &kp CAPS    &kp PSCRN   &kp DEL       &kp ESC       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP      &mmv MOVE_RIGHT &msc SCRL_DOWN
         &trans      &trans      &trans      &trans        &trans        &trans
       >;
 
