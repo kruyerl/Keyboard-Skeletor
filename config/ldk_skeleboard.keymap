@@ -108,7 +108,7 @@ combo_##NAME { \
       flavor = "hold-preferred";
       require-prior-idle-ms = <100>;
       tapping-term-ms = <180>;
-      quick-tap-ms = <120>;
+      quick-tap-ms = <200>;
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <16 17 18 19>; // right-hand home row mod positions
       hold-trigger-on-release;
@@ -119,7 +119,7 @@ combo_##NAME { \
       flavor = "hold-preferred";
       require-prior-idle-ms = <100>;
       tapping-term-ms = <180>;
-      quick-tap-ms = <120>;
+      quick-tap-ms = <200>;
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <10 11 12 13>; // left-hand home row mod positions
       hold-trigger-on-release;
@@ -149,8 +149,7 @@ combo_##NAME { \
   keymap {
     compatible = "zmk,keymap";
 
-    base_layer {
-      display-name = "Base";
+    base_layer {      display-name = "Base";
       bindings = <
         &kp Q         &kp W         &kp E       &kp R       &kp T         &kp Y     &kp U       &kp I       &kp O       &kp P
         &lhm LSHIFT A  &lhm LCTRL S   &lhm LALT D  &lhm LGUI F  &kp G     &kp H     &rhm RGUI J  &rhm RALT K  &rhm RCTRL L &rhm RSHIFT BSPC
@@ -162,8 +161,8 @@ combo_##NAME { \
       display-name = "Alt";
       bindings = <
         &kp N1      &kp N2      &kp N3      &kp  N4     &kp N5            &kp N6          &kp N7          &kp N8          &kp N9          &kp N0
-        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    &td_mouse0        &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &msc SCRL_UP      
-        &alt_ff     &kp CAPS    &kp PSCRN   &kp DEL     &kp ESC           &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &msc SCRL_DOWN  
+        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    &td_mouse0        &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &trans      
+        &alt_ff     &kp CAPS    &kp PSCRN   &msc SCRL_DOWN &msc SCRL_UP   &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &trans  
                                 &trans      &trans      &trans            &trans          &trans          &trans
       >;
 
